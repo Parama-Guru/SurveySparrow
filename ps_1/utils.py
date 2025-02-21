@@ -39,77 +39,113 @@ For each input, provide:
 
 Here are some examples of how you respond:
 
-example_user: The restaurant staff were incredibly rude and our food arrived cold. The only positive was the beautiful view from our table.
-example_assistant: {{
-  "emotions": {{
-    "primary": {{"emotion": "Anger", "activation": "High", "intensity": 0.8}},
-    "secondary": {{"emotion": "Appreciation", "activation": "Low", "intensity": 0.2}}
-  }},
-  "topics": {{
-    "main": ["Service", "Food", "Ambiance"],
-    "subtopics": {{
-      "Service": ["Staff Attitude"],
-      "Food": ["Temperature"],
-      "Ambiance": ["View"]
-    }}
-  }},
-  "adorescore": {{
-    "overall": 25,
-    "breakdown": {{
-      "Service": 12,
-      "Food": 18,
-      "Ambiance": 75
-    }}
-  }}
-}}
+Example 1
 
-example_user: The online course was comprehensive and well-structured. The instructors were knowledgeable, and the material was up-to-date. The only drawback was the lack of practical application.
-example_assistant: {{
-  "emotions": {{
-    "primary": {{"emotion": "Satisfaction", "activation": "Medium", "intensity": 0.85}},
-    "secondary": {{"emotion": "Mild Disappointment", "activation": "Low", "intensity": 0.25}}
-  }},
-  "topics": {{
-    "main": ["Course Content", "Instruction", "Course Structure"],
-    "subtopics": {{
-      "Course Content": ["Comprehensiveness", "Relevance"],
-      "Instruction": ["Instructor Knowledge"],
-      "Course Structure": ["Practical Application"]
-    }}
-  }},
-  "adorescore": {{
-    "overall": 78,
-    "breakdown": {{
-      "Course Content": 88,
-      "Instruction": 90,
-      "Course Structure": 55
-    }}
-  }}
-}}
+User: The restaurant staff were incredibly rude and our food arrived cold. The only positive was the beautiful view from our table.
 
-example_user: I'm absolutely thrilled with my new headphones! The sound quality is incredible, the battery lasts forever, and they're so comfortable I forget I'm wearing them.
-example_assistant: {{
-  "emotions": {{
-    "primary": {{"emotion": "Excitement", "activation": "High", "intensity": 0.95}},
-    "secondary": {{"emotion": "Contentment", "activation": "Medium", "intensity": 0.7}}
-  }},
-  "topics": {{
-    "main": ["Product Quality", "Battery Life", "Comfort"],
-    "subtopics": {{
-      "Product Quality": ["Sound Quality", "Overall Performance"],
-      "Battery Life": ["Duration"],
-      "Comfort": ["Wearability"]
-    }}
-  }},
-  "adorescore": {{
-    "overall": 96,
-    "breakdown": {{
-      "Product Quality": 98,
-      "Battery Life": 95,
-      "Comfort": 94
-    }}
-  }}
-}}
+assistant:
+{
+"emotions": {
+"primary": {
+"emotion": "Anger",
+"activation": "High",
+"intensity": 0.8
+},
+"secondary": {
+"emotion": "Appreciation",
+"activation": "Low",
+"intensity": 0.2
+}
+},
+"topics": {
+"main": ["Service", "Food", "Ambiance"],
+"subtopics": {
+"Service": ["Staff Attitude"],
+"Food": ["Temperature"],
+"Ambiance": ["View"]
+}
+},
+"adorescore": {
+"overall": 25,
+"breakdown": {
+"Service": 12,
+"Food": 18,
+"Ambiance": 75
+}
+}
+}
+
+Example 2
+
+User: The online course was comprehensive and well-structured. The instructors were knowledgeable, and the material was up-to-date. The only drawback was the lack of practical application.
+
+assistant:
+{
+"emotions": {
+"primary": {
+"emotion": "Satisfaction",
+"activation": "Medium",
+"intensity": 0.85
+},
+"secondary": {
+"emotion": "Mild Disappointment",
+"activation": "Low",
+"intensity": 0.25
+}
+},
+"topics": {
+"main": ["Course Content", "Instruction", "Course Structure"],
+"subtopics": {
+"Course Content": ["Comprehensiveness", "Relevance"],
+"Instruction": ["Instructor Knowledge"],
+"Course Structure": ["Practical Application"]
+}
+},
+"adorescore": {
+"overall": 78,
+"breakdown": {
+"Course Content": 88,
+"Instruction": 90,
+"Course Structure": 55
+}
+}
+}
+
+Example 3
+
+User: I'm absolutely thrilled with my new headphones! The sound quality is incredible, the battery lasts forever, and they're so comfortable I forget I'm wearing them.
+
+assistant:
+{
+"emotions": {
+"primary": {
+"emotion": "Excitement",
+"activation": "High",
+"intensity": 0.95
+},
+"secondary": {
+"emotion": "Contentment",
+"activation": "Medium",
+"intensity": 0.7
+}
+},
+"topics": {
+"main": ["Product Quality", "Battery Life", "Comfort"],
+"subtopics": {
+"Product Quality": ["Sound Quality", "Overall Performance"],
+"Battery Life": ["Duration"],
+"Comfort": ["Wearability"]
+}
+},
+"adorescore": {
+"overall": 96,
+"breakdown": {
+"Product Quality": 98,
+"Battery Life": 95,
+"Comfort": 94
+}
+}
+}
 
 Now, analyze the following feedback and provide a structured JSON response.
 """
