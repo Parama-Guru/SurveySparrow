@@ -11,12 +11,7 @@ def main():
         # Display the input text
         llm=model()
         feedback_response=feedback(user_input)
-        response = None
-        while response is None:
-            try:
-                response = llm.invoke(user_input)
-            except Exception as e:
-                st.write("An error occurred, retrying...")
+        response = llm.invoke(user_input)
         st.write("System Recommendation",feedback_response.content)
         st.write("Sentiment Analysis:", response["properties"])
         
