@@ -17,7 +17,7 @@ def main():
                 response = llm.invoke(user_input)
             except Exception as e:
                 st.write("An error occurred, retrying...")
-        st.write("System Recommendation",feedback_response["content"])
+        st.write("System Recommendation",feedback_response.content)
         st.write("Sentiment Analysis:", response["properties"])
         
         
