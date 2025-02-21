@@ -1,7 +1,7 @@
 import streamlit as st
-from services import model
+from services import model , feedback 
 def main():
-    st.title("Basic Streamlit App")
+    st.title("Customer Emotion Analysis System")
 
     # Get user input
     user_input = st.text_input("Enter some text:")
@@ -10,6 +10,7 @@ def main():
     if st.button("Submit"):
         # Display the input text
         llm=model()
+        feedback_response=feedback(user_input)
         response = None
         while response is None:
             try:
@@ -17,6 +18,8 @@ def main():
             except Exception as e:
                 st.write("An error occurred, retrying...")
         st.write("Sentiment Analysis:", response["properties"])
+        st.write("System Recommendation",feedback_response)
+        
 
 if __name__ == "__main__":
     main()
