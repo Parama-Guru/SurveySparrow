@@ -1,11 +1,5 @@
-langchain-community==0.3.7
-langchain-google-genai==2.0.4
-langchain-groq==0.2.1
-langchain-huggingface==0.1.2
-langchain-mistralai==0.2.1
-langchain-nomic==0.1.4
-langchain-ollama==0.2.0
-langchain-unstructured==0.1.6
-langchainhub==0.1.21
-langgraph==0.2.50
-streamlit==1.40.1
+langchain-community
+langchain
+langchain-groq
+langgraph
+streamlit
