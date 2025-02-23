@@ -8,7 +8,7 @@ def main():
 
     # Submit button
     if st.button("Submit"):
-        with st.spinner("processing")
+        with st.spinner("processing"):
             #Loading the models
             sentiment_analysis=model()
             translator_model=translator()
