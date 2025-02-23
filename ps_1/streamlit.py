@@ -4,19 +4,23 @@ def main():
     st.title("Customer Emotion Analysis System")
 
     # Get user input
-    user_input = st.text_input("Enter some text:")
+    user_input = st.text_input("Enter Your FeedBack/Review in any language:")
 
     # Submit button
     if st.button("Submit"):
-        # Display the input text
-        sentiment_analysis=model()
-        translator_model=translator()
-        translation=translator_model.invoke(user_input)
-        sentiment_analysis.invoke(translation)
-        feedback_response=feedback(translation)
-        response = sentiment_analysis.invoke(user_input)
-        st.markdown(f"**System Recommendation:** {feedback_response.content}")
-        st.json(response.dict())
+        with st.spinner("processing")
+            #Loading the models
+            sentiment_analysis=model()
+            translator_model=translator()
+            # translating to English
+            translation = translator_model.invoke(user_input)
+            # finding the Sentiment of Feedback/Review
+            response = sentiment_analysis.invoke(user_input)
+            # Giving a personalised Response from System
+            feedback_response = feedback(translation)
+            # Displaying the output
+            st.markdown(f"**System Recommendation:** {feedback_response.content}")
+            st.json(response.dict())
         
         
 
