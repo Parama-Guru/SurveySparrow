@@ -20,7 +20,7 @@ def main():
             feedback_response = feedback(translation)
             # Displaying the output
             st.markdown(f"**System Recommendation:** {feedback_response.content}")
-            st.json(response.dict())
+            st.json(response.model_dump())
         
         
 
