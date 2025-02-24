@@ -1,4 +1,4 @@
-from typing import Optional, List, Dict
+from typing import List, Dict
 from enum import Enum
 from pydantic import BaseModel, Field
 
@@ -14,15 +14,15 @@ class EmotionData(BaseModel):
 
 class Emotions(BaseModel):
     primary: EmotionData = Field(..., description="Primary emotion detected in the feedback, mapping customer text to emotional states (e.g., Joy, Serenity, Ecstasy)")
-    secondary: Optional[EmotionData] = Field(None, description="Secondary emotion detected in the feedback. This includes emotions such as frustration, disappointment, happiness, and the overall sentiment of the sentence. The analysis must also detect any sarcasm present.")
+    secondary: EmotionData = Field(..., description="Capture any secondary emotions detected in the feedback, including those arising from sarcasm or other nuances.")
 
 class TopicAnalysis(BaseModel):
-    main: List[str] = Field(..., min_items=1, description="Extract the main topics from the feedback. Main topics refer to the primary subjects or themes discussed in the feedback, such as Delivery, Quality, Clothes, Customer Service, or Pricing. The main topic must be present in the sentence.")
+    maintopics: List[str] = Field(..., min_items=1, description="Extract the main topics from the feedback. Main topics refer to the primary subjects or themes discussed in the feedback, such as Delivery, Quality, Clothes, Customer Service, or Pricing. The main topic must be present in the sentence.")
     subtopics: Dict[str, List[str]] = Field(..., description="Dictionary mapping main topics to their subtopics. Each main topic is associated with a list of subtopics that provide more detailed aspects or components of the main topic. The subtopic must also be present in the sentence.")
 
 class ScoreBreakdown(BaseModel):
-    overall: float = Field(..., description="Score based on the overall sentiment of the feedback, must be in range -100 and 100 and it must be present and not be None. The analysis must also detect any sarcasm present.")
-    overall_breakdown: Dict[str, float] = Field(..., description="Overall sentiment score broken down with respect to the influence of the main topics in the sentence")
+    overall: float = Field(..., description="Score based on the overall sentiment of the feedback, must be in range -100 and 100 and it must be present and not be None. The analysis must also detect any sarcasm present.", min_value=-100, max_value=100)
+    overall_breakdown: Dict[str, float] = Field(..., description="Overall sentiment score broken down with respect to the influence of the main topics in the sentence. The keys must be the same as the main topics that are actually present in the feedback.", min_items=1)
 
 class SentimentAnalysisResult(BaseModel):
     '''Customer Sentiment Analysis Result'''
