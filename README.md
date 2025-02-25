@@ -65,8 +65,9 @@ customer-emotion-analysis-system/
 
 6. Your browser should automatically open to `http://localhost:8501` displaying the application. If not, open this URL manually.
 
-## Troubleshooting
+![workflow](output.png)
 
+## Troubleshooting
 1. **API Key Errors**:
    - Ensure your Groq API key is correctly set in the `.env` file
    - Verify the API key is active and has sufficient quota
