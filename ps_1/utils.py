@@ -43,9 +43,6 @@ def prompt_sentiment():
     )
     return prompt
 
-class TranslationOutput(BaseModel):
-    translated_text: str = Field(..., description="The translated text in English after processing the input text.")
-    
 def prompt_translator():
     prompt = (
         "You are an advanced AI assistant that translates text from any given language to English. "
