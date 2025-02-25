@@ -17,11 +17,10 @@ class Emotions(BaseModel):
     secondary: EmotionData = Field(..., description="Capture any secondary emotions detected in the feedback, including those arising from sarcasm or other nuances.")
 
 class TopicAnalysis(BaseModel):
-    maintopics: List[str] = Field(..., min_items=1, description="Extract the main topics from the feedback. Main topics refer to the primary subjects or themes discussed in the feedback, such as Delivery, Quality, Clothes, Customer Service, or Pricing. The main topic must be present in the sentence.")
-    subtopics: Dict[str, List[str]] = Field(..., description="Dictionary mapping main topics to their subtopics. Each main topic is associated with a list of subtopics that provide more detailed aspects or components of the main topic. The subtopic must also be present in the sentence.")
-
+    maintopics: List[str] = Field(..., description="Extract the main topics from the feedback. Main topics refer to the primary subjects or themes discussed in the feedback, such as Delivery, Quality, Clothes, Customer Service, or Pricing. The main topic must be present in the sentence.")
+    subtopics: Dict[str, List[str]] = Field(..., min_items=1, description="The subtopic must be present in the sentence such that it provide more detailed aspects or components of the main topic.Each main topic is associated with a list of subtopics that describe the main topic in detail. ")
 class ScoreBreakdown(BaseModel):
-    overall: float = Field(..., description="Score based on the overall sentiment of the feedback, must be in range -100 and 100 and it must be present and not be None. The analysis must also detect any sarcasm present.", min_value=-100, max_value=100)
+    overall: int = Field(20, description="Score based on the overall sentiment of the feedback, must be in range -100 and 100 and it must be present and not be None. The analysis must also detect any sarcasm present.", min_value=-100, max_value=100)
     overall_breakdown: Dict[str, float] = Field(..., description="Overall sentiment score broken down with respect to the influence of the main topics in the sentence. The keys must be the same as the main topics that are actually present in the feedback.", min_items=1)
 
 class SentimentAnalysisResult(BaseModel):
@@ -38,7 +37,7 @@ def prompt_sentiment():
         "- **Emotions**: Identify the primary and secondary emotions present in the feedback. "
         "For each emotion, specify the activation level (High, Medium, Low) and the intensity score (a value between 0 and 1).\n"
         "- **Topics & Subtopics**: Extract the main topics discussed in the feedback. "
-        "For each main topic, identify and list the associated subtopics that provide more detailed aspects or components of the main topic.\n"
+        "For each main topic, identify and list the associated subtopics that provide more detailed aspects or components of the main topic the subtopics must be present in the sentence.\n"
         "- **Adorescore**: Calculate a sentiment score ranging from -100 to +100 based on the overall sentiment of the feedback. "
         "Provide a breakdown of this score by topic, indicating how each main topic influences the overall sentiment score.\n"
     )

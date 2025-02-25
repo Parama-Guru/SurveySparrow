@@ -1,5 +1,6 @@
 import streamlit as st
 from services import model, feedback, translator
+from groq import BadRequestError
 
 def main():
     st.title("🌟 Customer Emotion Analysis System 🌟") # must display in single line
@@ -35,10 +36,13 @@ def main():
         with st.spinner("Processing... Please wait."):
             # Translating to English
             translation = translator_model.invoke(user_input)
-            
-            # Finding the Sentiment of Feedback/Review
-            response = sentiment_analysis.invoke(user_input)
-            
+      
+            try:
+                # Finding the Sentiment of Feedback/Review
+                response = sentiment_analysis.invoke(user_input)
+            except BadRequestError:
+                st.error("The input is not valid. Please check your feedback and try again.")
+                return
             # Giving a personalized Response from System
             feedback_response = feedback(translation)
             
