@@ -42,6 +42,8 @@ def prompt_sentiment():
         "Provide a breakdown of this score by topic, indicating how each main topic influences the overall sentiment score.\n"
     )
     return prompt
+class TranslationOutput(BaseModel):
+    translated_text: str = Field(..., description="The translated text in English")
 
 def prompt_translator():
     prompt = (
