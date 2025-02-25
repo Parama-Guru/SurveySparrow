@@ -4,7 +4,7 @@ from groq import BadRequestError
 import pandas as pd
 import matplotlib.pyplot as plt
 def main():
-    
+
     st.title("🌟 Customer Emotion Analysis System 🌟") # must display in single line
 
     # Check if models are loaded
@@ -51,7 +51,8 @@ def main():
             # Displaying the output
             st.markdown(f"**🌟 System Recommendation:** {feedback_response.content}") 
             st.markdown(f"**🌟 Sentiment Analysis Score:**")
-            st.json(response.model_dump())
+            output = {k: {sub_k: sub_v for sub_k, sub_v in v.items() if sub_v != 0} for k, v in response.model_dump().items() if isinstance(v, dict)}
+            st.json(output)
             # Displaying the output in a dashboard format with charts and graphs
             st.markdown("## 🌟 Sentiment Analysis Dashboard 🌟")
             
