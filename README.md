@@ -3,6 +3,11 @@
 ## Introduction
 
 The Customer Emotion Analysis System is a powerful tool designed to analyze customer feedback, extract emotions, identify topics, and provide personalized responses. This guide will help you set up and use the system effectively.
+## Deployment
+
+The Customer Emotion Analysis System is deployed and can be accessed via the following link:
+
+[Customer Emotion Analysis System Deployment](https://surveysparrow-sentiment-analysis.streamlit.app/)
 
 ## Setup Instructions
 
