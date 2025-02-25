@@ -65,6 +65,7 @@ customer-emotion-analysis-system/
 
 6. Your browser should automatically open to `http://localhost:8501` displaying the application. If not, open this URL manually.
 
+### Workflow
 <p align="center">
   <img src="output.png" alt="workflow">
 </p>
