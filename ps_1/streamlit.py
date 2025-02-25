@@ -24,7 +24,6 @@ def main():
     3. "Oh great, another product that doesn't work as advertised. Just what I needed!" (Sarcastic)
     4. "The delivery was quick, but the product quality is not up to the mark." (Neutral)
     5. "Customer support was very helpful and resolved my issue promptly." (Positive)
-    6. "I found the website difficult to navigate and the checkout process was confusing." (Negative)
     """
     st.sidebar.markdown(side_bar_message)
 
