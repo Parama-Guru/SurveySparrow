@@ -4,6 +4,7 @@ from groq import BadRequestError
 import pandas as pd
 import matplotlib.pyplot as plt
 def main():
+    
     st.title("🌟 Customer Emotion Analysis System 🌟") # must display in single line
 
     # Check if models are loaded
