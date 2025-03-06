@@ -41,7 +41,7 @@ def main():
       
             try:
                 # Finding the Sentiment of Feedback/Review
-                response = sentiment_analysis.invoke(user_input)
+                response = sentiment_analysis.invoke(translation.translated_text)
             except BadRequestError:
                 st.error("The input is not valid. Please check your feedback and try again.")
                 return
